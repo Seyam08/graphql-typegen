@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-use-before-define */
 import { GraphQLResolveInfo } from 'graphql';
 
 export type Maybe<T> = T | null;
@@ -38,6 +36,11 @@ export type Greetings = {
   __typename?: 'Greetings';
   first?: Maybe<Scalars['String']['output']>;
   last?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type Location = {
+  __typename?: 'Location';
+  address: Scalars['String']['output'];
 };
 
 export type Mutation = {
@@ -194,6 +197,7 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   Greetings: ResolverTypeWrapper<Greetings>;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Location: ResolverTypeWrapper<Location>;
   Mutation: ResolverTypeWrapper<Record<PropertyKey, never>>;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -206,6 +210,7 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
   Greetings: Greetings;
   ID: Scalars['ID']['output'];
+  Location: Location;
   Mutation: Record<PropertyKey, never>;
   Query: Record<PropertyKey, never>;
   String: Scalars['String']['output'];
@@ -220,6 +225,14 @@ export type GreetingsResolvers<
 > = {
   first?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   last?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+};
+
+export type LocationResolvers<
+  ContextType = any,
+  ParentType extends
+    ResolversParentTypes['Location'] = ResolversParentTypes['Location'],
+> = {
+  address?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 };
 
 export type MutationResolvers<
@@ -274,6 +287,7 @@ export type UserResolvers<
 
 export type Resolvers<ContextType = any> = {
   Greetings?: GreetingsResolvers<ContextType>;
+  Location?: LocationResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Test?: TestResolvers<ContextType>;

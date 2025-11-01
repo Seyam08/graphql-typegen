@@ -6,6 +6,10 @@ type User {
   id: ID!
   name: String!
 }
+type Test {
+  text: String!
+  state: Boolean
+}
 type Location {
   address: String!
 }

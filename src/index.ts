@@ -10,15 +10,11 @@ const PORT = 3000;
 const yoga = createYoga({
   schema,
 
-  // While using Next.js file convention for routing, we need to configure Yoga to use the correct endpoint
   graphqlEndpoint: '/api',
-
-  // Yoga needs to know how to create a valid Next response
   fetchAPI: { Response },
   graphiql: true,
 });
 
-// Bind GraphQL Yoga to the graphql endpoint to avoid rendering the playground on any path
 app.use(yoga.graphqlEndpoint, yoga);
 
 app.listen(PORT, () => {
