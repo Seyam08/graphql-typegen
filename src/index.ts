@@ -1,3 +1,4 @@
+import type { Response } from 'express';
 import express from 'express';
 import { createYoga } from 'graphql-yoga';
 import { schema } from './schema.js';
@@ -16,6 +17,14 @@ const yoga = createYoga({
 });
 
 app.use(yoga.graphqlEndpoint, yoga);
+
+app.get('/', (_, res: Response) => {
+  res
+    .status(200)
+    .json(
+      'Welcome to the GraphQL server! Visit /api for the GraphQL endpoint.',
+    );
+});
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
